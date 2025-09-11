@@ -2,7 +2,7 @@ import heapq
 
 graph = {
     "Duran": {"Milagro": 25,"Guayaquil":5},
-    "Milagro": {"Portoviejo": 190, "Duran": 5, "Guayaquil": 52},
+    "Milagro": {"Portoviejo": 190, "Duran": 25, "Guayaquil": 52},
     "Guayaquil": {"Duran":5,"Milagro": 52, "Machala": 180, "Riobamba": 200, "Ambato": 265, "Babahoyo": 67},
     "Machala": {"Guayaquil": 180, "Loja": 230},
     "Loja": {"Machala": 230, "Cuenca": 214},
@@ -38,6 +38,7 @@ def uniform_cost_search(start, goal):
 
         # Expandir vecinos
         for neighbor, distance in graph[city].items():
+            nodes_generated += 1
             new_cost = cost + distance
 
             # Solo insertamos si es la primera vez o si encontramos un costo mejor
@@ -45,7 +46,6 @@ def uniform_cost_search(start, goal):
                 best_cost[neighbor] = new_cost
                 new_path = path + [neighbor]
                 heapq.heappush(frontier, (new_cost, neighbor, new_path))
-                nodes_generated += 1
 
     return None, float("inf"), nodes_generated
 
