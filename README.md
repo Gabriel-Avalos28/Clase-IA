@@ -27,3 +27,5 @@ print("Nodos generados:", nodos)
 - Python 3.x
 - No requiere librerías externas
 """
+
+>> El trabajo fue realizado por todos los integrantes en conjunto
